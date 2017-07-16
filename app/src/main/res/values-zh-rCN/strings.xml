@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XyTodo</string>
+    <string name="app_slogan">让生活更简单</string>
+
+    <string name="about_open_source_license"><u>开放源代码许可</u></string>
+    <string name="about_developer">开发者:Kulics Wu</string>
+    <string name="about_version">版本: v 1.0</string>
+    <string name="about_official_website">官网</string>
+
+    <string name="note">备注</string>
+    <string name="search_name">搜索</string>
+    <string name="all">所有</string>
+    <string name="name">名称</string>
+    <string name="content">内容</string>
+    <string name="fingerprint">指纹</string>
+
+    <string name="column_fingerprint">指纹</string>
+    <string name="column_fingerprint_sub">设置主密码以使用指纹功能</string>
+    <string name="column_format_export">格式化导出</string>
+    <string name="column_format_export_sub">使用格式化导出已解密的原文，可在其它兼容app上还原数据</string>
+    <string name="column_format_import">格式化导入</string>
+    <string name="column_format_import_sub">使用格式化数据导入原文，可导入其它兼容app上的数据</string>
+
+    <string name="action_set">更改为</string>
+
+    <string name="button_ok">确认</string>
+    <string name="button_cancel">取消</string>
+    <string name="button_set">设置</string>
+    <string name="button_clear">清空</string>
+    <string name="button_reset">重置</string>
+    <string name="button_search">查找</string>
+    <string name="button_save">保存</string>
+    <string name="button_add">添加</string>
+    <string name="button_delete">删除</string>
+    <string name="button_use">使用</string>
+    <string name="button_copy">复制</string>
+    <string name="button_send">发送</string>
+    <string name="button_restore">还原</string>
+    <string name="button_change">更改</string>
+    <string name="button_color">颜色</string>
+    <string name="button_import">导入</string>
+    <string name="button_export">导出</string>
+
+    <string name="dialog_title_confirm">确认保存</string>
+    <string name="dialog_title_enter">输入</string>
+    <string name="dialog_title_filter">查询分类</string>
+    <string name="dialog_title_clear_data">确认清空数据</string>
+
+    <string name="tips_fingerprint">你需要使用设置按钮将主密码保存在本地才能使用指纹功能，谨慎在Root过的手机中使用。在此页面触摸指纹会显示已存储的主密码。</string>
+
+    <string name="dialog_content_clear_data">你会失去所有的数据。</string>
+
+    <string name="err_name_none">名称不能为空！</string>
+
+    <string name="toast_copy">已拷贝至剪切板~</string>
+    <string name="toast_err_type">数据类型错误，请使用正确的源数据！</string>
+    <string name="toast_success_restore">还原成功~</string>
+    <string name="toast_success_auth">识别成功</string>
+    <string name="toast_err_auth">识别失败</string>
+
+    <string name="activity_title_main">XyTodo</string>
+    <string name="activity_title_search">搜索</string>
+    <string name="activity_title_about_app">关于 XyTodo</string>
+    <string name="activity_title_about_license">开放源代码许可</string>
+    <string name="activity_title_guide">指南</string>
+    <string name="activity_title_contact_us">联系我们</string>
+    <string name="activity_title_settings">设置</string>
+    <string name="activity_title_category">分类</string>
+    <string name="activity_title_fingerprint">指纹</string>
+    <string name="activity_title_format_export">格式化导出</string>
+    <string name="activity_title_format_import">格式化导入</string>
+
+    <string name="menu_settings">设置</string>
+    <string name="menu_backup">备份</string>
+    <string name="menu_restore">还原</string>
+    <string name="menu_search">查找</string>
+    <string name="menu_add">添加</string>
+    <string name="menu_delete">删除</string>
+    <string name="menu_palette">调色</string>
+    <string name="menu_filter">筛选</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_guide">指南</string>
+    <string name="menu_contact_us">联系我们</string>
+    <string name="menu_more">更多信息</string>
+    <string name="menu_function">功能</string>
+
+
+    <string name="bs_more">更多</string>
+    <string name="tips_export">你可以将格式化数据作为文字导出。</string>
+    <string name="tips_import">你只需将格式化数据复制于此然后点击导入即可。</string>
+    <string name="column_clear_data">清空数据</string>
+    <string name="column_clear_data_sub">清空应用内所有数据</string>
+    <string name="activity_title_task_add">添加任务</string>
+    <string name="activity_title_task_edit">编辑任务</string>
+    <string name="button_palette">调色</string>
+    <string name="dialog_title_palette">设置颜色</string>
+    <string name="dialog_title_delete">确认删除</string>
+    <string name="dialog_content_delete">你将会失去这条任务。</string>
+    <string name="activity_title_note">备注</string>
+    <string name="toast_fast_click">"不要那么用力的点我啦！~ "</string>
+    <string name="toast_quit">再按一次退出 XyTodo</string>
+    <string name="today">今天</string>
+    <string name="todo">待办</string>
+    <string name="done">已完成</string>
+    <string name="yesterday">昨天</string>
+    <string name="tomorrow">明天</string>
+    <string name="next_week">下一周</string>
+    <string name="custom">自定义</string>
+    <string name="target">目标</string>
+    <string name="about_website">http://naxy.sxl.cn/</string>
+</resources>

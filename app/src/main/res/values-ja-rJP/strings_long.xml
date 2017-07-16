@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	     <string name="longstr_guide"> <Data>
+          <b>1. XyTodo の用途</b> \n
+          \n
+        1.1  XyTodo 設計されて書き留め管理お Todo として、また１つのオープンソースソフトウェアを提供し、学習初心者アプリケーション開発の実例から見てください Github 。\n
+         \n
+         <b>2. XyTodoのデータ</b> \n
+         \n
+         2.1 XyTodo はまだ未支持同期機能、この機能は未来のバージョンに入れて。\n
+             \n
+        </Data></string>
+    	     <string name="longstr_contact_us"> <Data>
+&#160;&#160;&#160;&#160;&#160;&#160;とてもうれしいあなたXyTodoダウンロードを体験しました、ご使用の中で何が会って疑問を歓迎する、いつでも连絡し。\n
+&#160;&#160;&#160;&#160;&#160;&#160;
+今までにメールを送信　kulics@naxy.me　、フォローツイッター　https://twitter.com/KulicsWu 我々と连絡を聞いて、私たちは真剣にあなたの意見と助けのあなたの問題を解決する。\n
+&#160;&#160;&#160;&#160;&#160;&#160;
+XyTodoがとても必要あなたの貴重なご意見を支えて、改善の希望XyTodoがおそばに一緒に成長して、あなたの最も有能な道具の一つになる。\n
+                 \n
+
+        </Data></string>
+</resources>

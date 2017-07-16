@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_today"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        android:title="@string/today"/>
+
+    <item
+        android:id="@+id/action_tomorrow"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:title="@string/tomorrow"/>
+
+    <item
+        android:id="@+id/action_next_week"
+        android:orderInCategory="2"
+        app:showAsAction="always"
+        android:title="@string/next_week"/>
+
+    <item
+        android:id="@+id/action_custom"
+        android:orderInCategory="3"
+        app:showAsAction="always"
+        android:title="@string/custom"/>
+</menu>

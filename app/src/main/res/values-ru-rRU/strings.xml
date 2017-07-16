@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XyTodo</string>
+    <string name="app_slogan">сделать жизнь простых</string>
+
+    <string name="about_open_source_license"><u>Открытым исходным кодом лицензии</u></string>
+    <string name="about_developer">Разработчик: Kulics Wu</string>
+    <string name="about_version">Версия:  v 1.0</string>
+    <string name="about_official_website">Официальный сайт</string>
+
+    <string name="note">Примечание</string>
+    <string name="search_name">Поиск</string>
+    <string name="all">Все</string>
+    <string name="name">Имя</string>
+    <string name="fingerprint">отпечаток</string>
+
+    <string name="column_fingerprint">отпечаток</string>
+    <string name="column_fingerprint_sub">Набор в основном положить плотной кодирование с помощью функции отпечатков пальцев</string>
+
+    <string name="action_set">Установите</string>
+
+    <string name="button_ok">Хорошо</string>
+    <string name="button_cancel">Отмена</string>
+    <string name="button_set">Набор</string>
+    <string name="button_clear">Ясно</string>
+    <string name="button_reset">Сброс</string>
+    <string name="button_search">Поиск</string>
+    <string name="button_save">Сохранить</string>
+    <string name="button_add">Добавить</string>
+    <string name="button_delete">Удалить</string>
+    <string name="button_use">Использование</string>
+    <string name="button_copy">Копия</string>
+    <string name="button_send">Отправить</string>
+    <string name="button_restore">Восстановление</string>
+    <string name="button_change">Изменения</string>
+    <string name="button_color">Цвет</string>
+
+    <string name="dialog_title_confirm">Подтвердите сохранение изменений</string>
+    <string name="dialog_title_enter">Введите</string>
+    <string name="dialog_title_filter">Поиск категории</string>
+    <string name="dialog_title_clear_data">Подтвердите для очистки данных</string>
+
+    <string name="tips_fingerprint">Вам нужно использовать кнопку Set для сохранения мастер-пароль на локальном хранилище для использования функций отпечатков пальцев, разумное использование в корень телефона. Касание отпечатков пальцев на этой странице будут отображаться мастер-пароль.</string>
+
+    <string name="dialog_content_clear_data">Вы потеряете все данные.</string>
+
+    <string name="err_name_none">Имя не может быть пустым!</string>
+
+    <string name="toast_copy">Был скопирован в буфер обмена ~</string>
+    <string name="toast_err_type">Данные типа ошибки, пожалуйста, используйте правильный источник данных!</string>
+    <string name="toast_success_restore">Восстановить успех ~</string>
+    <string name="toast_success_auth">Ошибка Успех</string>
+    <string name="toast_err_auth">Ошибка аутентификации</string>
+
+    <string name="activity_title_main">XyTodo</string>
+    <string name="activity_title_search">Поиск</string>
+    <string name="activity_title_about_app">О XyTodo</string>
+    <string name="activity_title_about_license">Открытым исходным кодом лицензии</string>
+    <string name="activity_title_guide">Путеводитель</string>
+    <string name="activity_title_contact_us">Свяжитесь с нами</string>
+    <string name="activity_title_settings">Параметры</string>
+    <string name="activity_title_category">Категория</string>
+    <string name="activity_title_fingerprint">Отпечаток пальца</string>
+
+    <string name="menu_settings">Параметры</string>
+    <string name="menu_backup">Резервное копирование</string>
+    <string name="menu_restore">Восстановление</string>
+    <string name="menu_search">Поиск</string>
+    <string name="menu_add">Добавьте</string>
+    <string name="menu_delete">Удалить</string>
+    <string name="menu_palette">Палитра</string>
+    <string name="menu_filter">Фильтр</string>
+    <string name="menu_about">О</string>
+    <string name="menu_guide">Путеводитель</string>
+    <string name="menu_contact_us">Свяжитесь с нами</string>
+    <string name="menu_more">Более подробная информация</string>
+    <string name="menu_function">Функция</string>
+
+
+    <string name="bs_more">Даже многие</string>
+    <string name="activity_title_format_import">Формат импорта</string>
+    <string name="activity_title_format_export">Формат экспорта</string>
+    <string name="button_import">Импорт</string>
+    <string name="button_export">Экспорт</string>
+    <string name="content">Содержание</string>
+    <string name="column_format_export">Формат экспорта</string>
+    <string name="column_format_import">Формат импорта</string>
+    <string name="column_format_export_sub">Используйте формат для экспорта данных расшифрованной происхождения, вы можете импортировать его на другие совместимые приложения.</string>
+    <string name="column_format_import_sub">Используйте формат данных импорта происхождения данных, вы можете импортировать данные из других совместимых приложений.</string>
+    <string name="tips_export">Этот формат данных можно экспортировать в виде текста.</string>
+    <string name="tips_import">Вы просто скопировать формат данных здесь, затем нажмите кнопку Импорт.</string>
+    <string name="column_clear_data">Удалить данные</string>
+    <string name="column_clear_data_sub">Очистить все данные приложения</string>
+    <string name="activity_title_task_add">Добавить задачу </string>
+    <string name="activity_title_task_edit">Изменить задачу </string>
+    <string name="button_palette">Палитра</string>
+    <string name="dialog_title_palette">Установить цвет</string>
+    <string name="dialog_title_delete">Подтвердите удаление</string>
+    <string name="dialog_content_delete">Вы потеряете  этой  задачи. </string>
+    <string name="activity_title_note">Примечание</string>
+    <string name="toast_fast_click">Не нажмите меня так сильно, пожалуйста! ~</string>
+    <string name="toast_quit">Нажмите снова, чтобы выйти из XyTodo</string>
+    <string name="today">Cегодня</string>
+    <string name="todo">Делать</string>
+    <string name="done">завершена </string>
+    <string name="yesterday">Вчера</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="next_week">Следующая неделя</string>
+    <string name="custom">Обычай</string>
+    <string name="target">Цели</string>
+    <string name="about_website">https://kulicswu.wixsite.com/naxy</string>
+</resources>

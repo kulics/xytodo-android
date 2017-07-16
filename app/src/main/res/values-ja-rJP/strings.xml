@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XyTodo</string>
+    <string name="app_slogan">生活をもっと簡単</string>
+
+    <string name="about_open_source_license"><u>オープンソースコードの許可</u></string>
+    <string name="about_developer">開発者: Kulics Wu</string>
+    <string name="about_version">バージョン: v 1.0</string>
+    <string name="about_official_website">公式サイト</string>
+
+    <string name="note">備注</string>
+    <string name="search_name">検索</string>
+    <string name="all">全部</string>
+    <string name="name">名称</string>
+    <string name="fingerprint">指紋</string>
+
+    <string name="column_fingerprint">指紋</string>
+    <string name="column_fingerprint_sub">主パスワードを設定する指紋機能を使用する</string>
+
+    <string name="action_set">设置する</string>
+
+    <string name="button_ok">確認</string>
+    <string name="button_cancel">取り消す</string>
+    <string name="button_set">设置</string>
+    <string name="button_clear">クリア</string>
+    <string name="button_reset">リセット</string>
+    <string name="button_search">検索</string>
+    <string name="button_save">保存</string>
+    <string name="button_add">追加</string>
+    <string name="button_delete">削除</string>
+    <string name="button_use">使用</string>
+    <string name="button_copy">複製</string>
+    <string name="button_send">発送</string>
+    <string name="button_restore">復元</string>
+    <string name="button_change">変更</string>
+    <string name="button_color">色</string>
+
+    <string name="dialog_title_confirm">確認保存</string>
+    <string name="dialog_title_enter">入力</string>
+    <string name="dialog_title_filter">検索分類</string>
+    <string name="dialog_title_clear_data">確認クリアデータ</string>
+
+    <string name="tips_fingerprint">あなたが使用設定ボタンを主パスワード保存地元でしか利用できない指紋機能で、慎重Rootた携帯電話での使用。このページでは、指紋は記憶のメインパスワードを表示することができます。</string>
+
+    <string name="dialog_content_clear_data">データをすべて失うことができます。</string>
+
+    <string name="err_name_none">名称は空っぽにならない！</string>
+
+    <string name="toast_copy">すでに複製からせん断板~</string>
+    <string name="toast_err_type">データのタイプエラー、正しいソースを使ってください！</string>
+    <string name="toast_success_restore">復元成功~</string>
+    <string name="toast_success_auth">識別成功</string>
+    <string name="toast_err_auth">識別失敗</string>
+
+    <string name="activity_title_main">XyTodo</string>
+    <string name="activity_title_search">検索</string>
+    <string name="activity_title_about_app">XyTodoについて</string>
+    <string name="activity_title_about_license">オープンソースコードの許可</string>
+    <string name="activity_title_guide">ガイド</string>
+    <string name="activity_title_contact_us">連絡する</string>
+    <string name="activity_title_settings">設置</string>
+    <string name="activity_title_category">分類</string>
+    <string name="activity_title_fingerprint">指紋</string>
+
+    <string name="menu_settings">设置</string>
+    <string name="menu_backup">バックアップ</string>
+    <string name="menu_restore">復元</string>
+    <string name="menu_search">検索</string>
+    <string name="menu_add">追加</string>
+    <string name="menu_delete">削除</string>
+    <string name="menu_palette">色</string>
+    <string name="menu_filter">選別</string>
+    <string name="menu_about">について</string>
+    <string name="menu_guide">ガイド</string>
+    <string name="menu_contact_us">連絡する</string>
+    <string name="menu_more">もっと情報</string>
+    <string name="menu_function">機能</string>
+
+
+    <string name="bs_more">もっと</string>
+    <string name="activity_title_format_export">フォーマットエクスポート</string>
+    <string name="activity_title_format_import">フォーマットインポート</string>
+    <string name="button_export">エクスポート</string>
+    <string name="button_import">インポート</string>
+    <string name="content">内容</string>
+    <string name="column_format_export">フォーマットエクスポート</string>
+    <string name="column_format_import">フォーマットインポート</string>
+    <string name="column_format_import_sub">フォーマットデータインポート元データを使用して、他の互換アプリからデータをインポートすることができます。</string>
+    <string name="column_format_export_sub">フォーマットを使用して復号化されたオリジンデータをエクスポートし、他の互換アプリでインポートすることができます。</string>
+    <string name="tips_export">この書式データをテキストとしてエクスポートできます。</string>
+    <string name="tips_import">あなただけのフォーマットデータをコピーしてここにインポートをクリックします。</string>
+    <string name="column_clear_data">クリアデータ</string>
+    <string name="column_clear_data_sub">応用のすべてのデータを削除する</string>
+    <string name="activity_title_task_add">任務を追加</string>
+    <string name="activity_title_task_edit">任務を編集</string>
+    <string name="button_palette">パレット</string>
+    <string name="dialog_title_palette">色をセットにして</string>
+    <string name="dialog_title_delete">削除を確認する</string>
+    <string name="dialog_content_delete">あなたはこの任務を失うことになる。</string>
+    <string name="activity_title_note">備注</string>
+    <string name="toast_fast_click">ないほど激しく、私をクリックしてください！〜</string>
+    <string name="toast_quit">XyTodoをやめることをもう一度クリック</string>
+    <string name="today">今日</string>
+    <string name="todo">待办</string>
+    <string name="done">完成した</string>
+    <string name="yesterday">昨日</string>
+    <string name="tomorrow">明日</string>
+    <string name="next_week">下一週間</string>
+    <string name="custom">カスタム</string>
+    <string name="target">目標</string>
+    <string name="about_website">https://kulicswu.wixsite.com/naxy</string>
+</resources>

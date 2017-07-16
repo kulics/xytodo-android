@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@mipmap/ic_action_delete_white_24dp"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom"
+        android:title="@string/menu_delete"/>
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@mipmap/ic_content_add_white_24dp"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:title="@string/menu_add"/>
+
+    <item
+        android:id="@+id/action_palette"
+        android:icon="@mipmap/ic_image_palette_white_24dp"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        android:title="@string/button_palette"/>
+</menu>

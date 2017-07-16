@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<item-->
+          <!--android:id="@+id/action_add"-->
+          <!--android:icon="@mipmap/ic_content_add_white_24dp"-->
+          <!--android:orderInCategory="1"-->
+          <!--app:showAsAction="always"-->
+          <!--android:title="@string/menu_add"/>-->
+
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@mipmap/ic_action_list_white_24dp"
+        android:orderInCategory="2"
+        android:title="@string/menu_filter"
+        app:showAsAction="always" >
+        <menu>
+            <item
+                android:id="@+id/action_today"
+                android:title="@string/today" />
+            <item
+                android:id="@+id/action_all"
+                android:title="@string/all" />
+            <item
+                android:id="@+id/action_todo"
+                android:title="@string/todo" />
+            <item
+                android:id="@+id/action_done"
+                android:title="@string/done" />
+        </menu>
+    </item>
+</menu>

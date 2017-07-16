@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="longstr_guide"><Data><b>1. The purpose of the XyTodo</b> \n
+\n
+1.1 XyTodo has been designed to manage your to-do list, and as an open source software, it provides a case for beginners to learn application development. Source code, please refer to Github.\n
+\n
+ <b>2. The data of XyTodo</b> \n
+\n
+2.1 XyTodo has not yet supported synchronization, and this feature will be added in future releases.\n
+        \n
+</Data></string>
+    	     <string name="longstr_contact_us"> <Data>
+&#160;&#160;&#160;&#160;&#160;&#160;We very glad that you have experienced XyTodo, if you encounter any problems in the use of welcome you to contact us at any time.\n
+&#160;&#160;&#160;&#160;&#160;&#160;Now you can send an email to kulics@naxy.me, or view our twitter https://twitter.com/KulicsWu  to get in touch with us, we will listen to you and help you solve the problem.\n
+&#160;&#160;&#160;&#160;&#160;&#160;XyTodo very much need your valuable advice to support our improvement, I hope XyTodo can grow up with you, to become one of your most powerful tool.\n
+\n
+
+
+        </Data></string>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	     <string name="longstr_guide"> <Data>
+          <b>1. XyTodo 的用途</b> \n
+          \n
+        1.1 XyTodo 被设计用来记录管理您的待办事项，同时作为一个开源软件，提供初学者学习应用开发的案例，源码请从 Github 查阅。\n
+         \n
+         <b>2. XyTodo 的数据</b> \n
+         \n
+         2.1 XyTodo 暂时还未支持同步功能，这个功能将在未来的版本中加入。\n
+             \n
+        </Data></string>
+    	     <string name="longstr_contact_us"> <Data>
+&#160;&#160;&#160;&#160;&#160;&#160;非常高兴您下载体验了 XyTodo，如果您在使用中碰到任何疑问欢迎您随时联系我们。\n
+&#160;&#160;&#160;&#160;&#160;&#160;现在可以通过加入 qq 群 220291338、 发送邮件至 kulics@naxy.me、 关注微博 http://weibo.com/kulics 与我们取得联系，我们会认真聆听您的意见和帮助您解决问题。\n
+&#160;&#160;&#160;&#160;&#160;&#160;XyTodo 非常需要您的宝贵意见支持我们改进，希望 XyTodo 能有您的陪伴一起成长，成为您最得力的工具之一。\n
+                 \n
+
+        </Data></string>
+</resources>

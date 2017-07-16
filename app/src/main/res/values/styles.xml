@@ -1,0 +1,73 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme_Material_Blue_NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/PURE_BLUE_500</item>
+        <item name="colorPrimaryDark">@color/PURE_BLUE_700</item>
+    </style>
+    <style name="Theme_Material_Purple_NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/PURE_PURPLE_500</item>
+        <item name="colorPrimaryDark">@color/PURE_PURPLE_700</item>
+    </style>
+    <style name="Theme_Material_Red_NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/PURE_RED_500</item>
+        <item name="colorPrimaryDark">@color/PURE_RED_700</item>
+    </style>
+    <style name="Theme_Material_Yellow_NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/PURE_YELLOW_500</item>
+        <item name="colorPrimaryDark">@color/PURE_YELLOW_700</item>
+    </style>
+    <style name="Theme_Material_Green_NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/PURE_GREEN_500</item>
+        <item name="colorPrimaryDark">@color/PURE_GREEN_700</item>
+    </style>
+    <style name="Theme_Material_Black_Parallax" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/PURE_BLACK_500</item>
+        <item name="colorPrimaryDark">@color/PURE_BLACK_700</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="Theme_Material_Black_Dark_NoActionBar" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/PURE_BLACK_500</item>
+        <item name="colorPrimaryDark">@color/PURE_BLACK_700</item>
+    </style>
+    <style name="Theme_Material_Black_NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/PURE_BLACK_500</item>
+        <item name="colorPrimaryDark">@color/PURE_BLACK_700</item>
+        <!--<item name="android:navigationBarColor">@color/pure_black_700</item>-->
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Dialog theme -->
+    <style name="DialogCard" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/bg_dialog_white</item>
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上 -->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="DialogCardLight" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/bg_dialog_white</item>
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上 -->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- WindowAnimation -->
+
+    <style name="WindowAnimationDropThrough">
+        <item name="android:windowEnterAnimation">@anim/drop_through_enter</item>
+        <item name="android:windowExitAnimation">@anim/drop_through_exit</item>
+    </style>
+
+
+</resources>

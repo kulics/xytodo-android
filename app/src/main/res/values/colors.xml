@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="PURE_BLUE_500">#2196f3</color>
+    <color name="PURE_PURPLE_500">#9c27b0</color>
+    <color name="PURE_GREEN_500">#4caf50</color>
+    <color name="PURE_YELLOW_500">#ff9800</color>
+    <color name="PURE_RED_500">#f44336</color>
+    <color name="PURE_INDIGO_500">#3f51b5</color>
+    <color name="PURE_CYAN_500">#00bcd4</color>
+    <color name="PURE_DEEP_ORANGE_500">#ff5722</color>
+    <color name="PURE_BROWN_500">#795548</color>
+    <color name="PURE_GRAY_500">#9e9e9e</color>
+    <color name="PURE_PINK_500">#FF4081</color>
+    <color name="PURE_TEAL_500">#009688</color>
+    <color name="PURE_BLUE_GRAY_500">#607d8b</color>
+    <color name="PURE_BLACK_500">#424242</color>
+
+
+    <color name="PURE_GRAY_300">#e0e0e0</color>
+    <color name="PURE_LIGHT_WHITE">#ffffff</color>
+    <color name="PURE_BLUE_300">#64b5f6</color>
+    <color name="PURE_PURPLE_300">#ba68c8</color>
+    <color name="PURE_GREEN_300">#81c784</color>
+    <color name="PURE_YELLOW_300">#ffb74d</color>
+    <color name="PURE_RED_300">#e57373</color>
+    <color name="PURE_PINK_300">#F8BBD0</color>
+    <color name="PURE_TEAL_300">#4DB6AC</color>
+    <color name="PURE_CYAN_300">#4DD0E1</color>
+    <color name="PURE_INDIGO_300">#7986CB</color>
+    <color name="PURE_BROWN_300">#A1887F</color>
+    <color name="PURE_BLUE_GRAY_300">#90A4AE</color>
+    <color name="PURE_BLACK_300">#616161</color>
+
+    <color name="PURE_BLUE_700">#1976d2</color>
+    <color name="PURE_PURPLE_700">#7b1fa2</color>
+    <color name="PURE_GREEN_700">#388e3c</color>
+    <color name="PURE_YELLOW_700">#f57c00</color>
+    <color name="PURE_RED_700">#d32f2f</color>
+    <color name="PURE_INDIGO_700">#303f9f</color>
+    <color name="PURE_CYAN_700">#0097a7</color>
+    <color name="PURE_DEEP_ORANGE_700">#e64a19</color>
+    <color name="PURE_BROWN_700">#5d4037</color>
+    <color name="PURE_PINK_700">#EC407A</color>
+    <color name="PURE_TEAL_700">#00796B</color>
+    <color name="PURE_GRAY_700">#616161</color>
+    <color name="PURE_BLUE_GRAY_700">#455a64</color>
+    <color name="PURE_BLACK_700">#212121</color>
+
+    <color name="PURE_BLUE_200">#BBDEFB</color>
+    <color name="PURE_CYAN_200">#B2EBF2</color>
+    <color name="PURE_GREEN_200">#C8E6C9</color>
+    <color name="PURE_YELLOW_200">#FFECB3</color>
+    <color name="PURE_RED_200">#FFCDD2</color>
+    <color name="PURE_WHITE_200">#FFFFFF</color>
+    <color name="PURE_BLACK_200">#CCCCCC</color>
+
+
+    <color name="PURE_HEAVY_WHITE">#f5f5f5</color>
+    <color name="PURE_HEAVY_BLACK">#000000</color>
+
+    <color name="ACCENT_PINK_A200">#ff4081</color>
+    <color name="ACCENT_PINK_A400">#f50057</color>
+
+    <color name="text_normal_dark">#404040</color>
+    <color name="text_normal_gray">#757575</color>
+    <color name="text_normal_pink">#ff80ab</color>
+
+</resources>

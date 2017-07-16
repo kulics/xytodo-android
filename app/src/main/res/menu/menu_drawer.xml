@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/menu_function">
+        <menu>
+            <item
+                android:id="@+id/action_setting"
+                android:icon="@mipmap/ic_action_settings_grey_24dp"
+                android:title="@string/menu_settings" />
+        </menu>
+    </item>
+    <item android:title="@string/menu_more">
+        <menu>
+            <item
+                android:id="@+id/action_about"
+                android:icon="@mipmap/ic_maps_local_offer_grey_24dp"
+                android:title="@string/menu_about" />
+            <item
+                android:id="@+id/action_guide"
+                android:icon="@mipmap/ic_maps_navigation_grey_24dp"
+                android:title="@string/menu_guide" />
+            <item
+                android:id="@+id/action_contact_us"
+                android:icon="@mipmap/ic_social_mood_grey_24dp"
+                android:title="@string/menu_contact_us" />
+        </menu>
+    </item>
+</menu>
