@@ -321,38 +321,23 @@ public class ActivityTaskEdit extends ActivityBase implements ToolConstant {
 
     //设置沉浸颜色
     public void setColor(String color) {
+        Window window = getWindow();
         switch (color) {
             case "green":
                 mToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.PURE_GREEN_500));
-                if (android.os.Build.VERSION.SDK_INT >= 21) {
-                    Window window = getWindow();
-                    // 很明显，这两货是新API才有的。
-                    window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_GREEN_700));
-                }
+                window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_GREEN_700));
                 break;
             case "blue":
                 mToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.PURE_BLUE_500));
-                if (android.os.Build.VERSION.SDK_INT >= 21) {
-                    Window window = getWindow();
-                    // 很明显，这两货是新API才有的。
-                    window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_BLUE_700));
-                }
+                window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_BLUE_700));
                 break;
             case "red":
                 mToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.PURE_RED_500));
-                if (android.os.Build.VERSION.SDK_INT >= 21) {
-                    Window window = getWindow();
-                    // 很明显，这两货是新API才有的。
-                    window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_RED_700));
-                }
+                window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_RED_700));
                 break;
             case "yellow":
                 mToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.PURE_YELLOW_500));
-                if (android.os.Build.VERSION.SDK_INT >= 21) {
-                    Window window = getWindow();
-                    // 很明显，这两货是新API才有的。
-                    window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_YELLOW_700));
-                }
+                window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_YELLOW_700));
                 break;
         }
     }

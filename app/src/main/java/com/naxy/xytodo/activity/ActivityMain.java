@@ -379,6 +379,7 @@ public class ActivityMain extends ActivityBase implements ToolConstant {
 
     // 初始化listview
     private void RecyclerViewInit() {
+        //设置拖拽
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
             @Override
             public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
