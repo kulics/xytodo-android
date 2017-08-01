@@ -26,8 +26,8 @@ import java.util.Date;
 import java.util.List;
 
 
-
-public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+{
     private ModelTask mDataTask;//任务数据
     private List<ModelTaskSub> mDataTaskSub;//子任务数据
     private int iCheckNum;
@@ -36,94 +36,115 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context mContext;
     private DBManager mDBM;
 
-    public AdapterTaskEdit(Context context, DBManager dbm, ViewHolderClicks listenerIntent, ViewHolderBtnClicks listenerBtn) {
+    public AdapterTaskEdit(Context context, DBManager dbm, ViewHolderClicks listenerIntent, ViewHolderBtnClicks listenerBtn)
+    {
         this.mContext = context;
         this.mDBM = dbm;
         this.mListenerIntent = listenerIntent;
         this.mListenerBtn = listenerBtn;
     }
 
-    public void UpdateDataset(ModelTask task) {
+    public void UpdateDataset(ModelTask task)
+    {
         mDataTask = task;
         mDataTaskSub = task.getSub();
         iCheckNum = 0;
-        for (ModelTaskSub item:mDataTaskSub) {
-            if (item.getStatus() == 1){
+        for (ModelTaskSub item : mDataTaskSub)
+        {
+            if (item.getStatus() == 1)
+            {
                 iCheckNum = iCheckNum + 1;
             }
         }
         this.notifyDataSetChanged();
     }
 
-    public void UpdateStatus(int position){
+    public void UpdateStatus(int position)
+    {
         this.notifyItemChanged(position);
     }
 
-    public void TimeUpdate(){
+    public void TimeUpdate()
+    {
         this.notifyItemChanged(1);
     }
 
-    public void NoteUpdate(String note){
+    public void NoteUpdate(String note)
+    {
         mDataTask.setNote(note);
         this.notifyItemChanged(2);
     }
 
-    public void DataSubAdd() {
+    public void DataSubAdd()
+    {
         this.notifyItemInserted(this.getItemCount());
         mDataTaskSub.add(new ModelTaskSub());
         this.notifyItemChanged(0);
         //this.notifyDataSetChanged();
     }
 
-    public void DataSubDelete(int index) {
+    public void DataSubDelete(int index)
+    {
         //this.notifyItemRemoved(index);
-        if (mDataTaskSub.get(index - 3).getStatus() == 1){
+        if (mDataTaskSub.get(index - 3).getStatus() == 1)
+        {
             iCheckNum = iCheckNum - 1;
         }
         mDataTaskSub.remove(index - 3);
         this.notifyDataSetChanged();
     }
 
-    public ModelTask DataTaskGet() {
+    public ModelTask DataTaskGet()
+    {
         return mDataTask;
     }
 
-    public List<ModelTaskSub> DataSubGet() {
+    public List<ModelTaskSub> DataSubGet()
+    {
         return mDataTaskSub;
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return 3 + mDataTaskSub.size();
     }
 
     // 每个convert view都会调用此方法，获得当前所需要的view样式
     @Override
-    public int getItemViewType(int position) {
+    public int getItemViewType(int position)
+    {
         return position;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
         // 根据布局文件实例化view
         View v = null;
         RecyclerView.ViewHolder vh = null;
-        switch (viewType) {
+        switch (viewType)
+        {
             case 0:
                 // 根据布局文件实例化view
                 v = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.view_item_task_edit, parent, false);
-                vh = new ViewHolderTaskEdit(v, mListenerIntent, new EditTextListener() {
+                vh = new ViewHolderTaskEdit(v, mListenerIntent, new EditTextListener()
+                {
                     @Override
-                    public void onTextEdit(int position, String str) {
+                    public void onTextEdit(int position, String str)
+                    {
                         mDataTask.setContent(str);
                     }
-                }, new ViewHolderCbxChange() {
+                }, new ViewHolderCbxChange()
+                {
                     @Override
-                    public void onViewClick(int position, boolean isChecked) {
+                    public void onViewClick(int position, boolean isChecked)
+                    {
                         //必须先对当前状态做判断，因为每次装填都会触发事件，这里需要过滤
                         int b = isChecked ? 1 : 0;
-                        if (mDataTask.getStatus() != b) {
+                        if (mDataTask.getStatus() != b)
+                        {
                             mDataTask.setStatus(b);
                             long unixTime = new Date().getTime();//获取当前时区下日期时间对应的时间戳
                             mDataTask.setTimeDone((int) (unixTime / 1000));
@@ -149,23 +170,31 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 // 根据布局文件实例化view
                 v = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.view_item_task_edit_sub, parent, false);
-                vh = new ViewHolderTaskEditSub(v, mListenerIntent, mListenerBtn, new EditTextListener() {
+                vh = new ViewHolderTaskEditSub(v, mListenerIntent, mListenerBtn, new EditTextListener()
+                {
                     @Override
-                    public void onTextEdit(int position, String str) {
+                    public void onTextEdit(int position, String str)
+                    {
                         ModelTaskSub temp = mDataTaskSub.get(position - 3);
                         temp.setContent(str.toString().trim());
                     }
-                }, new ViewHolderCbxChange() {
+                }, new ViewHolderCbxChange()
+                {
                     @Override
-                    public void onViewClick(int position, boolean isChecked) {
+                    public void onViewClick(int position, boolean isChecked)
+                    {
                         //必须先对当前状态做判断，因为每次装填都会触发事件，这里需要过滤
                         int b = isChecked ? 1 : 0;
                         ModelTaskSub temp = mDataTaskSub.get(position - 3);
-                        if (temp.getStatus() != b) {
+                        if (temp.getStatus() != b)
+                        {
                             temp.setStatus(b);
-                            if (b == 1){
+                            if (b == 1)
+                            {
                                 iCheckNum = iCheckNum + 1;
-                            }else{
+                            }
+                            else
+                            {
                                 iCheckNum = iCheckNum - 1;
                             }
                             //刷新对应条目
@@ -180,9 +209,11 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
+    {
         // 给该控件设置数据(数据从集合类中来)
-        switch (position) {
+        switch (position)
+        {
             case 0:
                 ViewHolderTaskEdit holder0 = (ViewHolderTaskEdit) holder;
                 holder0.tvContent.setText(mDataTask.getContent());
@@ -191,13 +222,16 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 String count = iCheckNum + "/" + mDataTaskSub.size();
                 //holder0.tvSub.setText(time + "  ▪  " + count);
                 holder0.tvSub.setText(count);
-                if (mDataTask.getStatus() == 1){
+                if (mDataTask.getStatus() == 1)
+                {
                     //文字加横线
-                    holder0.tvContent.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
+                    holder0.tvContent.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     //文字改颜色
                     holder0.tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.PURE_GRAY_500));
-                }else{
-                    holder0.tvContent.getPaint().setFlags(Paint. ANTI_ALIAS_FLAG );
+                }
+                else
+                {
+                    holder0.tvContent.getPaint().setFlags(Paint.ANTI_ALIAS_FLAG);
                     holder0.tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.PURE_BLACK_500));
                 }
                 break;
@@ -217,14 +251,17 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 holder3.tvContent.setHint(R.string.content);
                 ModelTaskSub sub = mDataTaskSub.get(position - 3);
                 holder3.tvContent.setText(sub.getContent());
-                if (sub.getStatus() == 1){
+                if (sub.getStatus() == 1)
+                {
                     //文字加横线
-                    holder3.tvContent.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
+                    holder3.tvContent.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     //文字改颜色
                     holder3.tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.PURE_GRAY_500));
                     holder3.cbxStatus.setChecked(true);
-                }else{
-                    holder3.tvContent.getPaint().setFlags(Paint. ANTI_ALIAS_FLAG );
+                }
+                else
+                {
+                    holder3.tvContent.getPaint().setFlags(Paint.ANTI_ALIAS_FLAG);
                     holder3.tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.PURE_BLACK_500));
                     holder3.cbxStatus.setChecked(false);
                 }
@@ -232,23 +269,28 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public interface ViewHolderClicks {
+    public interface ViewHolderClicks
+    {
         void onViewClick(int position);
     }
 
-    public interface ViewHolderBtnClicks {
+    public interface ViewHolderBtnClicks
+    {
         void onViewClick(int position, View v);
     }
 
-    interface EditTextListener {
+    interface EditTextListener
+    {
         void onTextEdit(int position, String str);
     }
 
-    public interface ViewHolderCbxChange {
+    public interface ViewHolderCbxChange
+    {
         void onViewClick(int position, boolean isChecked);
     }
 
-    private static class ViewHolderTaskEdit extends RecyclerView.ViewHolder {
+    private static class ViewHolderTaskEdit extends RecyclerView.ViewHolder
+    {
         EditText tvContent;
         AppCompatCheckBox cbxStatus;
         TextView tvSub;//文本
@@ -257,7 +299,8 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         EditTextListener mListenerTextContent;
         ViewHolderCbxChange mListenerCbx;//检查监听
 
-        ViewHolderTaskEdit(View v, ViewHolderClicks listenerIntent, EditTextListener listenerTextContent, ViewHolderCbxChange listenerCbx) {
+        ViewHolderTaskEdit(View v, ViewHolderClicks listenerIntent, EditTextListener listenerTextContent, ViewHolderCbxChange listenerCbx)
+        {
             super(v);
             mListenerContact = listenerIntent;
             mListenerTextContent = listenerTextContent;
@@ -268,36 +311,47 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
             cbxStatus = (AppCompatCheckBox) v.findViewById(R.id.cbx_status);
             rlytRippleContent = (RelativeLayout) v
                     .findViewById(R.id.item_rippleContent);
-            rlytRippleContent.setOnClickListener(new View.OnClickListener() {
+            rlytRippleContent.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
-                    if (mListenerContact != null) {
+                public void onClick(View v)
+                {
+                    if (mListenerContact != null)
+                    {
                         mListenerContact.onViewClick(getAdapterPosition());
                     }
                 }
             });
-            tvContent.addTextChangedListener(new TextWatcher() {
+            tvContent.addTextChangedListener(new TextWatcher()
+            {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                {
 
                 }
 
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (mListenerTextContent != null) {
+                public void onTextChanged(CharSequence s, int start, int before, int count)
+                {
+                    if (mListenerTextContent != null)
+                    {
                         mListenerTextContent.onTextEdit(getAdapterPosition(), s.toString().trim());
                     }
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {
+                public void afterTextChanged(Editable s)
+                {
 
                 }
             });
-            cbxStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            cbxStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+            {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (mListenerCbx != null) {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                {
+                    if (mListenerCbx != null)
+                    {
                         mListenerCbx.onViewClick(getAdapterPosition(), isChecked);
                     }
                 }
@@ -305,22 +359,27 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    private static class ViewHolderTaskEditNote extends RecyclerView.ViewHolder {
+    private static class ViewHolderTaskEditNote extends RecyclerView.ViewHolder
+    {
         TextView tvContent;
         RelativeLayout rlytRippleContent;//内容布局
         ViewHolderClicks mListenerContact;//ITEM监听
 
-        ViewHolderTaskEditNote(View v, ViewHolderClicks listenerIntent) {
+        ViewHolderTaskEditNote(View v, ViewHolderClicks listenerIntent)
+        {
             super(v);
             mListenerContact = listenerIntent;
             // 加载控件
             tvContent = (TextView) v.findViewById(R.id.tv_content);
             rlytRippleContent = (RelativeLayout) v
                     .findViewById(R.id.item_rippleContent);
-            rlytRippleContent.setOnClickListener(new View.OnClickListener() {
+            rlytRippleContent.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
-                    if (mListenerContact != null) {
+                public void onClick(View v)
+                {
+                    if (mListenerContact != null)
+                    {
                         mListenerContact.onViewClick(getAdapterPosition());
                     }
                 }
@@ -328,14 +387,16 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    private static class ViewHolderTaskEditTime extends RecyclerView.ViewHolder {
+    private static class ViewHolderTaskEditTime extends RecyclerView.ViewHolder
+    {
         TextView tvContent;
         AppCompatImageButton btnMore;
         RelativeLayout rlytRippleContent;//内容布局
         ViewHolderClicks mListenerContact;//ITEM监听
         ViewHolderBtnClicks mListenerBtn;//按钮监听
 
-        ViewHolderTaskEditTime(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn) {
+        ViewHolderTaskEditTime(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn)
+        {
             super(v);
             mListenerContact = listenerIntent;
             mListenerBtn = linstenerBtn;
@@ -344,18 +405,24 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
             btnMore = (AppCompatImageButton) v.findViewById(R.id.ib_btnMore);
             rlytRippleContent = (RelativeLayout) v
                     .findViewById(R.id.item_rippleContent);
-            rlytRippleContent.setOnClickListener(new View.OnClickListener() {
+            rlytRippleContent.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
-                    if (mListenerContact != null) {
+                public void onClick(View v)
+                {
+                    if (mListenerContact != null)
+                    {
                         mListenerContact.onViewClick(getAdapterPosition());
                     }
                 }
             });
-            btnMore.setOnClickListener(new View.OnClickListener() {
+            btnMore.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View view) {
-                    if (mListenerBtn != null) {
+                public void onClick(View view)
+                {
+                    if (mListenerBtn != null)
+                    {
                         mListenerBtn.onViewClick(getAdapterPosition(), btnMore);
                     }
                 }
@@ -364,7 +431,8 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 
-    private static class ViewHolderTaskEditSub extends RecyclerView.ViewHolder {
+    private static class ViewHolderTaskEditSub extends RecyclerView.ViewHolder
+    {
         EditText tvContent;
         AppCompatImageButton btnDelete;
         AppCompatCheckBox cbxStatus;
@@ -374,7 +442,9 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         EditTextListener mListenerTextContent;
         ViewHolderCbxChange mListenerCbx;//检查监听
 
-        ViewHolderTaskEditSub(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn, EditTextListener listenerTextContent, ViewHolderCbxChange listenerCbx) {
+        ViewHolderTaskEditSub(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn, EditTextListener listenerTextContent,
+                              ViewHolderCbxChange listenerCbx)
+        {
             super(v);
             mListenerContact = listenerIntent;
             mListenerBtn = linstenerBtn;
@@ -386,44 +456,58 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
             cbxStatus = (AppCompatCheckBox) v.findViewById(R.id.cbx_status);
             rlytRippleContent = (RelativeLayout) v
                     .findViewById(R.id.item_rippleContent);
-            rlytRippleContent.setOnClickListener(new View.OnClickListener() {
+            rlytRippleContent.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
-                    if (mListenerContact != null) {
+                public void onClick(View v)
+                {
+                    if (mListenerContact != null)
+                    {
                         mListenerContact.onViewClick(getAdapterPosition());
                     }
                 }
             });
-            btnDelete.setOnClickListener(new View.OnClickListener() {
+            btnDelete.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View view) {
-                    if (mListenerBtn != null) {
+                public void onClick(View view)
+                {
+                    if (mListenerBtn != null)
+                    {
                         mListenerBtn.onViewClick(getAdapterPosition(), btnDelete);
                     }
                 }
             });
-            tvContent.addTextChangedListener(new TextWatcher() {
+            tvContent.addTextChangedListener(new TextWatcher()
+            {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                {
 
                 }
 
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (mListenerTextContent != null) {
+                public void onTextChanged(CharSequence s, int start, int before, int count)
+                {
+                    if (mListenerTextContent != null)
+                    {
                         mListenerTextContent.onTextEdit(getAdapterPosition(), s.toString().trim());
                     }
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {
+                public void afterTextChanged(Editable s)
+                {
 
                 }
             });
-            cbxStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            cbxStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+            {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (mListenerCbx != null) {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                {
+                    if (mListenerCbx != null)
+                    {
                         mListenerCbx.onViewClick(getAdapterPosition(), isChecked);
                     }
                 }

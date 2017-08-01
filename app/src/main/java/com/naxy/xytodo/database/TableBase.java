@@ -1,22 +1,29 @@
 package com.naxy.xytodo.database;
 
 
-
-class TableBase {
+class TableBase
+{
     //表名
-    static String TableName() {
+    static String TableName()
+    {
         return "";
     }
+
     //项目
-    static String[] TableColumns() {
+    static String[] TableColumns()
+    {
         return new String[]{};
     }
+
     //创建表语句
-    static String TableCreate() {
+    static String TableCreate()
+    {
         return "";
     }
+
     //更新语句
-    static String TableUpgrade() {
+    static String TableUpgrade()
+    {
         return "DROP TABLE IF EXISTS " + TableName();
     }
 }

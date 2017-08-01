@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+{
     private List<ModelTask> mDataset;//数据集
     private ViewHolderClicks mListenerIntent;//按钮监听
     private ViewHolderCbxChange mListenerCbx;//检查监听
@@ -30,32 +31,43 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private DBManager mDBM;//数据库管理器
 
     public AdapterTask(Context context, DBManager dbm, ViewHolderClicks listenerIntent
-            , ViewHolderCbxChange listenerCbx) {
+            , ViewHolderCbxChange listenerCbx)
+    {
         this.mContext = context;
         this.mDBM = dbm;
         this.mListenerIntent = listenerIntent;
         this.mListenerCbx = listenerCbx;
     }
+
     //获取整个列表数据
-    public List<ModelTask> DataGetAll() {
+    public List<ModelTask> DataGetAll()
+    {
         return mDataset;
     }
+
     //更新整个列表
-    public void DataUpdate(String filterValue) {
+    public void DataUpdate(String filterValue)
+    {
         //清空数据
         mDataset = new ArrayList<>();
         List<ModelTask> dataset = mDBM.TaskGetTime(filterValue);
         //判断是否全部显示 filter为0时显示，否则过滤
-        if (filterValue.equals("today")) {
+        if (filterValue.equals("today"))
+        {
             //遍历添加进数据集
-            for (ModelTask v : dataset) {
-                if (ToolFunction.ComputeDateToday(v.getTimeTarget())) {
+            for (ModelTask v : dataset)
+            {
+                if (ToolFunction.ComputeDateToday(v.getTimeTarget()))
+                {
                     mDataset.add(v);
                 }
             }
-        } else {
+        }
+        else
+        {
             //遍历添加进数据集
-            for (ModelTask v : dataset) {
+            for (ModelTask v : dataset)
+            {
                 mDataset.add(v);
             }
         }
@@ -64,32 +76,41 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     //添加数据
-    public void DataAdd(ModelTask data) {
+    public void DataAdd(ModelTask data)
+    {
         mDataset.add(0, data);
         //使用动画插入
         this.notifyItemInserted(0);
     }
+
     //根据位置获取数据
-    public ModelTask DataGetByPosition(int position) {
+    public ModelTask DataGetByPosition(int position)
+    {
         return mDataset.get(position);
     }
+
     //获取统计数据
-    public String CountGet() {
+    public String CountGet()
+    {
         int iCheckNum = 0;
-        for (ModelTask item : mDataset) {
-            if (item.getStatus() == 1){
+        for (ModelTask item : mDataset)
+        {
+            if (item.getStatus() == 1)
+            {
                 iCheckNum = iCheckNum + 1;
             }
         }
         return iCheckNum + "/" + mDataset.size();
     }
 
-    public void UpdateStatus(int position){
+    public void UpdateStatus(int position)
+    {
         this.notifyItemChanged(position);
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
         // 根据布局文件实例化view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.view_item_card, parent, false);
@@ -99,7 +120,8 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
+    {
         // 给该控件设置数据(数据从集合类中来)
         ViewHolderCard vh = (ViewHolderCard) holder;
         ModelTask temp = mDataset.get(position);
@@ -110,40 +132,48 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         //vh.cbxStatus.setButtonTintList(new ColorStateList());
 
         //根据选择状态作不同显示
-        if (temp.getStatus() == 1){
+        if (temp.getStatus() == 1)
+        {
             //文字加横线
-            vh.tvContent.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
-            vh.tvSub.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
+            vh.tvContent.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            vh.tvSub.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             //设置选择
             vh.cbxStatus.setChecked(true);
             //设置背景色
             vh.cvContent.setBackgroundColor(ContextCompat.getColor(mContext, R.color.PURE_GRAY_500));
-        }else{
-            vh.tvContent.getPaint().setFlags(Paint. ANTI_ALIAS_FLAG );
-            vh.tvSub.getPaint().setFlags(Paint. ANTI_ALIAS_FLAG );
+        }
+        else
+        {
+            vh.tvContent.getPaint().setFlags(Paint.ANTI_ALIAS_FLAG);
+            vh.tvSub.getPaint().setFlags(Paint.ANTI_ALIAS_FLAG);
             vh.cbxStatus.setChecked(false);
             vh.cvContent.setBackgroundColor(ContextCompat.getColor(mContext, getColor(temp.getColor())));
         }
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return mDataset.size();
     }
 
-    public interface ViewHolderClicks {
+    public interface ViewHolderClicks
+    {
         void onViewClick(int position, View text, View background);
     }
 
-    public interface ViewHolderBtnClicks {
+    public interface ViewHolderBtnClicks
+    {
         void onViewClick(int position);
     }
 
-    public interface ViewHolderCbxChange {
+    public interface ViewHolderCbxChange
+    {
         void onViewClick(int position, boolean isChecked);
     }
 
-    private static class ViewHolderCard extends RecyclerView.ViewHolder {
+    private static class ViewHolderCard extends RecyclerView.ViewHolder
+    {
         TextView tvContent;//文本
         TextView tvSub;//文本
         //        AppCompatImageButton btnMore;
@@ -155,7 +185,8 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ViewHolderCbxChange mListenerCbx;//检查监听
 
 
-        ViewHolderCard(View v, ViewHolderClicks listenerIntent, ViewHolderCbxChange listenerCbx) {
+        ViewHolderCard(View v, ViewHolderClicks listenerIntent, ViewHolderCbxChange listenerCbx)
+        {
             super(v);
             mListenerClick = listenerIntent;
             mListenerCbx = listenerCbx;
@@ -177,18 +208,24 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                    }
 //                }
 //            });
-            rlytRippleContent.setOnClickListener(new View.OnClickListener() {
+            rlytRippleContent.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
-                    if (mListenerClick != null) {
+                public void onClick(View v)
+                {
+                    if (mListenerClick != null)
+                    {
                         mListenerClick.onViewClick(getAdapterPosition(), tvContent, cvContent);
                     }
                 }
             });
-            cbxStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            cbxStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+            {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (mListenerCbx != null) {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                {
+                    if (mListenerCbx != null)
+                    {
                         mListenerCbx.onViewClick(getAdapterPosition(), isChecked);
                     }
                 }
@@ -197,9 +234,11 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     //获取颜色方法
-    public int getColor(String tag) {
+    public int getColor(String tag)
+    {
         int id = 0;
-        switch (tag) {
+        switch (tag)
+        {
             case "green":
                 id = R.color.PURE_GREEN_500;
                 break;
@@ -219,27 +258,5 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return id;
     }
 
-    //获取颜色方法
-    public int getColor2(String tag) {
-        int id = 0;
-        switch (tag) {
-            case "green":
-                id = R.color.PURE_GREEN_700;
-                break;
-            case "blue":
-                id = R.color.PURE_BLUE_700;
-                break;
-            case "red":
-                id = R.color.PURE_RED_700;
-                break;
-            case "yellow":
-                id = R.color.PURE_YELLOW_700;
-                break;
-            default:
-                id = R.color.PURE_BLUE_700;
-                break;
-        }
-        return id;
-    }
 }
 

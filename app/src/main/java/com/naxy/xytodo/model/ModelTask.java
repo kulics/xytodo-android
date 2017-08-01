@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 //任务模型
-public class ModelTask extends ModelBase {
+public class ModelTask extends ModelBase
+{
     //项目字段
     public final static String COL_ID = "id";
     public final static String COL_CONTENT = "content";
@@ -31,7 +32,8 @@ public class ModelTask extends ModelBase {
     private List<ModelTaskSub> sub;//子任务
 
     //构造方法
-    public ModelTask() {
+    public ModelTask()
+    {
         content = "";
         note = "";
         color = "";
@@ -39,9 +41,11 @@ public class ModelTask extends ModelBase {
     }
 
     //转化为json
-    public JSONObject ToJSON() {
+    public JSONObject ToJSON()
+    {
         JSONObject temp = new JSONObject();
-        try {
+        try
+        {
             temp.put(COL_ID, id);
             temp.put(COL_CONTENT, content);
             temp.put(COL_NOTE, note);
@@ -51,90 +55,112 @@ public class ModelTask extends ModelBase {
             temp.put(COL_TIME_DONE, timeDone);
             temp.put(COL_TIME_SORT, timeSort);
             temp.put(COL_STATUS, status);
-        } catch (JSONException e) {
+        }
+        catch (JSONException e)
+        {
             e.printStackTrace();
         }
         return temp;
     }
 
 
-    public int getID() {
+    public int getID()
+    {
         return this.id;
     }
 
-    public void setID(int id) {
+    public void setID(int id)
+    {
         this.id = id;
     }
 
-    public String getContent() {
+    public String getContent()
+    {
         return this.content;
     }
 
-    public void setContent(String content) {
+    public void setContent(String content)
+    {
         this.content = content;
     }
 
-    public void setColor(String color) {
+    public void setColor(String color)
+    {
         this.color = color;
     }
 
-    public String getColor() {
+    public String getColor()
+    {
         return this.color;
     }
 
-    public int getTimeCreate() {
+    public int getTimeCreate()
+    {
         return this.timeCreate;
     }
 
-    public void setTimeCreate(int timeCreate) {
+    public void setTimeCreate(int timeCreate)
+    {
         this.timeCreate = timeCreate;
     }
 
-    public int getTimeDone() {
+    public int getTimeDone()
+    {
         return timeDone;
     }
 
-    public void setTimeDone(int timeDone) {
+    public void setTimeDone(int timeDone)
+    {
         this.timeDone = timeDone;
     }
 
-    public int getStatus() {
+    public int getStatus()
+    {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(int status)
+    {
         this.status = status;
     }
 
-    public int getTimeTarget() {
+    public int getTimeTarget()
+    {
         return timeTarget;
     }
 
-    public void setTimeTarget(int timeTarget) {
+    public void setTimeTarget(int timeTarget)
+    {
         this.timeTarget = timeTarget;
     }
 
-    public String getNote() {
+    public String getNote()
+    {
         return note;
     }
 
-    public void setNote(String note) {
+    public void setNote(String note)
+    {
         this.note = note;
     }
 
-    public List<ModelTaskSub> getSub() {
+    public List<ModelTaskSub> getSub()
+    {
         return sub;
     }
 
-    public void setSub(List<ModelTaskSub> sub) {
+    public void setSub(List<ModelTaskSub> sub)
+    {
         this.sub = sub;
     }
 
-    public int getTimeSort() {
+    public int getTimeSort()
+    {
         return timeSort;
     }
 
-    public void setTimeSort(int timeSort) {
+    public void setTimeSort(int timeSort)
+    {
         this.timeSort = timeSort;
     }
 }

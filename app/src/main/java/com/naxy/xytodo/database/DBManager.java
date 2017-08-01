@@ -13,11 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 //数据库管理器
-public class DBManager {
+public class DBManager
+{
     private DBHelper helper;
     private SQLiteDatabase db;
 
-    public DBManager(Context context) {
+    public DBManager(Context context)
+    {
         helper = new DBHelper(context);
         //因为getWritableDatabase内部调用了mContext.openOrCreateDatabase(mName, 0, mFactory);
         //所以要确保context已初始化,我们可以把实例化DBManager的步骤放在Activity的onCreate里
@@ -25,27 +27,36 @@ public class DBManager {
     }
 
     //清空数据库
-    public void DBClear() {
-        try {
+    public void DBClear()
+    {
+        try
+        {
             db = helper.getWritableDatabase();
             db.execSQL(TableTask.TableUpgrade());
             db.execSQL(TableTask.TableCreate());
             db.execSQL(TableTaskSub.TableUpgrade());
             db.execSQL(TableTaskSub.TableCreate());
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
     }
 
     //获取所有任务
-    public List<ModelTask> TaskGetAll() {
+    public List<ModelTask> TaskGetAll()
+    {
         List<ModelTask> rList = new ArrayList<>();
-        try {
+        try
+        {
             db = helper.getWritableDatabase();
             Cursor c = db.query(TableTask.TableName(), TableTask.TableColumns(), null, null, null, null, null);
-            while (c.moveToNext()) {
+            while (c.moveToNext())
+            {
                 ModelTask temp = new ModelTask();
                 temp.setID(c.getInt(c.getColumnIndex(ModelTask.COL_ID)));
                 temp.setContent(c.getString(c.getColumnIndex(ModelTask.COL_CONTENT)));
@@ -59,21 +70,28 @@ public class DBManager {
                 rList.add(temp);
             }
             c.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
         return rList;
     }
 
     //按时间倒序获取所有任务
-    public List<ModelTask> TaskGetTime(String param) {
+    public List<ModelTask> TaskGetTime(String param)
+    {
         List<ModelTask> rList = new ArrayList<>();
-        try {
+        try
+        {
             db = helper.getWritableDatabase();
             String whereParams = "";
-            switch (param){
+            switch (param)
+            {
                 case "today":
                     break;
                 case "all":
@@ -86,7 +104,8 @@ public class DBManager {
                     break;
             }
             Cursor c = db.query(TableTask.TableName(), TableTask.TableColumns(), whereParams, null, null, null, ModelTask.COL_TIME_SORT + " desc");
-            while (c.moveToNext()) {
+            while (c.moveToNext())
+            {
                 ModelTask temp = new ModelTask();
                 temp.setID(c.getInt(c.getColumnIndex(ModelTask.COL_ID)));
                 temp.setContent(c.getString(c.getColumnIndex(ModelTask.COL_CONTENT)));
@@ -100,22 +119,29 @@ public class DBManager {
                 rList.add(temp);
             }
             c.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
         return rList;
     }
 
     //获取任务
-    public ModelTask TaskGet(int id) {
+    public ModelTask TaskGet(int id)
+    {
         ModelTask temp = new ModelTask();
-        try {
+        try
+        {
             db = helper.getWritableDatabase();
             String[] whereParams = new String[]{id + ""};
             Cursor c = db.query(TableTask.TableName(), TableTask.TableColumns(), ModelTask.COL_ID + " = ? ", whereParams, null, null, null);
-            while (c.moveToNext()) {
+            while (c.moveToNext())
+            {
                 temp.setID(c.getInt(c.getColumnIndex(ModelTask.COL_ID)));
                 temp.setContent(c.getString(c.getColumnIndex(ModelTask.COL_CONTENT)));
                 temp.setNote(c.getString(c.getColumnIndex(ModelTask.COL_NOTE)));
@@ -127,18 +153,24 @@ public class DBManager {
                 temp.setStatus(c.getInt(c.getColumnIndex(ModelTask.COL_STATUS)));
             }
             c.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
         return temp;
     }
 
     //添加任务
-    public int TaskAdd(ModelTask model) {
+    public int TaskAdd(ModelTask model)
+    {
         int id = 0;
-        try {
+        try
+        {
             db = helper.getWritableDatabase();
             ContentValues cv = new ContentValues();
             cv.put(ModelTask.COL_CONTENT, model.getContent());
@@ -150,53 +182,73 @@ public class DBManager {
             cv.put(ModelTask.COL_TIME_SORT, model.getTimeSort());
             cv.put(ModelTask.COL_STATUS, model.getStatus());
             //使用最终插入的id来绑定
-            id = (int)db.insert(TableTask.TableName(), null, cv);
+            id = (int) db.insert(TableTask.TableName(), null, cv);
             //遍历添加自定义
-            for (ModelTaskSub item : model.getSub()) {
+            for (ModelTaskSub item : model.getSub())
+            {
                 item.setIdTask(id);
                 TaskSubAdd(item);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
         return id;
     }
 
     //更新任务
-    public void TaskCheck(ModelTask model) {
-        try {
+    public void TaskCheck(ModelTask model)
+    {
+        try
+        {
             db = helper.getWritableDatabase();
             String[] whereParams = new String[]{model.getID() + ""};
             ContentValues cv = new ContentValues();
             cv.put(ModelTask.COL_TIME_DONE, model.getTimeDone());
             cv.put(ModelTask.COL_STATUS, model.getStatus());
             db.update(TableTask.TableName(), cv, ModelTask.COL_ID + " = ? ", whereParams);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
     }
+
     //更新位置
-    public void TaskPosition(ModelTask model){
-        try {
+    public void TaskPosition(ModelTask model)
+    {
+        try
+        {
             db = helper.getWritableDatabase();
             String[] whereParams = new String[]{model.getID() + ""};
             ContentValues cv = new ContentValues();
             cv.put(ModelTask.COL_TIME_SORT, model.getTimeSort());
             db.update(TableTask.TableName(), cv, ModelTask.COL_ID + " = ? ", whereParams);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
     }
 
     //更新任务
-    public void TaskUpdate(ModelTask model) {
-        try {
+    public void TaskUpdate(ModelTask model)
+    {
+        try
+        {
             db = helper.getWritableDatabase();
             String[] whereParams = new String[]{model.getID() + ""};
             ContentValues cv = new ContentValues();
@@ -211,39 +263,53 @@ public class DBManager {
             //先删除后添加
             db.delete(TableTaskSub.TableName(), ModelTaskSub.COL_ID_TASK + " = ? ", whereParams);
             //遍历添加自定义
-            for (ModelTaskSub item : model.getSub()) {
+            for (ModelTaskSub item : model.getSub())
+            {
                 item.setIdTask(model.getID());
                 TaskSubAdd(item);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
     }
 
     //删除任务
-    public void TaskDelete(ModelTask model) {
-        try {
+    public void TaskDelete(ModelTask model)
+    {
+        try
+        {
             db = helper.getWritableDatabase();
             String[] whereParams = new String[]{model.getID() + ""};
             db.delete(TableTask.TableName(), ModelTask.COL_ID + " = ? ", whereParams);
             db.delete(TableTaskSub.TableName(), ModelTaskSub.COL_ID_TASK + " = ? ", whereParams);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
     }
 
     //获取子任务
-    public List<ModelTaskSub> TaskSubGet(int id_task) {
+    public List<ModelTaskSub> TaskSubGet(int id_task)
+    {
         List<ModelTaskSub> rList = new ArrayList<>();
-        try {
+        try
+        {
             db = helper.getWritableDatabase();
             String[] whereParams = new String[]{id_task + ""};
             Cursor c = db.query(TableTaskSub.TableName(), TableTaskSub.TableColumns(), ModelTaskSub.COL_ID_TASK + " = ? ", whereParams, null, null, null);
-            while (c.moveToNext()) {
+            while (c.moveToNext())
+            {
                 ModelTaskSub temp = new ModelTaskSub();
                 temp.setID(c.getInt(c.getColumnIndex(ModelTaskSub.COL_ID)));
                 temp.setIdTask(c.getInt(c.getColumnIndex(ModelTaskSub.COL_ID_TASK)));
@@ -252,26 +318,36 @@ public class DBManager {
                 rList.add(temp);
             }
             c.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
         return rList;
     }
 
     //添加子任务
-    public void TaskSubAdd(ModelTaskSub model) {
-        try {
+    public void TaskSubAdd(ModelTaskSub model)
+    {
+        try
+        {
             db = helper.getWritableDatabase();
             ContentValues cv = new ContentValues();
             cv.put(ModelTaskSub.COL_ID_TASK, model.getIdTask());
             cv.put(ModelTaskSub.COL_CONTENT, model.getContent());
             cv.put(ModelTaskSub.COL_STATUS, model.getStatus());
             db.insert(TableTaskSub.TableName(), null, cv);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             db.close();
         }
     }

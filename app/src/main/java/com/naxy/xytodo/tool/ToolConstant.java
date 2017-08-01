@@ -2,7 +2,8 @@ package com.naxy.xytodo.tool;
 
 
 //常量工具
-public interface ToolConstant {
+public interface ToolConstant
+{
     // 跳转动画类型
     int TYPE_SWIPERIGHT_ENTER = 0;// 右滑返回进入
     int TYPE_SWIPERIGHT_EXIT = 1;// 右滑返回退出

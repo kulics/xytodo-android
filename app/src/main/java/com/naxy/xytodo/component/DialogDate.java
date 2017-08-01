@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import com.naxy.xytodo.R;
 
-public class DialogDate extends Dialog {
+public class DialogDate extends Dialog
+{
     private Context mContext;
     private int iAnimationResID;
     private int iPositiveID;
@@ -26,11 +27,13 @@ public class DialogDate extends Dialog {
     private Button mNegativeBtn;
     private DatePicker mContent;
 
-    public DatePicker PickerGet(){
+    public DatePicker PickerGet()
+    {
         return mContent;
     }
 
-    private DialogDate(Builder builder) {
+    private DialogDate(Builder builder)
+    {
         super(builder.mContext, builder.mThemeResID);
         mContext = builder.mContext;
         iAnimationResID = builder.mAnimationResID;
@@ -41,12 +44,14 @@ public class DialogDate extends Dialog {
         mNegativeClickListener = builder.mNegativeClickListener;
     }
 
-    public static Builder from(Context context) {
+    public static Builder from(Context context)
+    {
         return new Builder(context);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         // 设置对话框使用的布局文件
         this.setContentView(R.layout.dialog_date);
@@ -56,17 +61,21 @@ public class DialogDate extends Dialog {
         mContent = (DatePicker) findViewById(R.id.datePicker);
         // 设置属性
         mPositiveBtn.setText(iPositiveID);
-        mPositiveBtn.setTextColor(ContextCompat.getColor(mContext,iPositiveColorID));
+        mPositiveBtn.setTextColor(ContextCompat.getColor(mContext, iPositiveColorID));
         mNegativeBtn.setText(iNegativeID);
-        mNegativeBtn.setTextColor(ContextCompat.getColor(mContext,R.color.text_normal_gray));
+        mNegativeBtn.setTextColor(ContextCompat.getColor(mContext, R.color.text_normal_gray));
         // 设置监听
-        mPositiveBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        mPositiveBtn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
                 mPositiveClickListener.onClick(DialogDate.this, DialogInterface.BUTTON_POSITIVE);
             }
         });
-        mNegativeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        mNegativeBtn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
                 mNegativeClickListener.onClick(DialogDate.this, DialogInterface.BUTTON_POSITIVE);
             }
         });
@@ -75,7 +84,8 @@ public class DialogDate extends Dialog {
         window.setWindowAnimations(iAnimationResID);
     }
 
-    public static class Builder {
+    public static class Builder
+    {
         Context mContext;
         int mThemeResID;
         OnClickListener mPositiveClickListener;
@@ -85,46 +95,55 @@ public class DialogDate extends Dialog {
         int mNegativeID;
         int mAnimationResID;
 
-        private Builder(Context context) {
+        private Builder(Context context)
+        {
             mContext = context;
         }
 
-        public Builder setTheme(int theme) {
+        public Builder setTheme(int theme)
+        {
             mThemeResID = theme;
             return this;
         }
 
-        public Builder setAnimations(int id) {
+        public Builder setAnimations(int id)
+        {
             mAnimationResID = id;
             return this;
         }
 
-        public Builder setPositiveID(int id) {
+        public Builder setPositiveID(int id)
+        {
             mPositiveID = id;
             return this;
         }
 
-        public Builder setPositiveColorID(int id) {
+        public Builder setPositiveColorID(int id)
+        {
             mPositiveColorID = id;
             return this;
         }
 
-        public Builder setNegativieID(int id) {
+        public Builder setNegativeID(int id)
+        {
             mNegativeID = id;
             return this;
         }
 
-        public Builder setPositiveListener(OnClickListener listener) {
+        public Builder setPositiveListener(OnClickListener listener)
+        {
             mPositiveClickListener = listener;
             return this;
         }
 
-        public Builder setNegativeListener(OnClickListener onClickListener) {
+        public Builder setNegativeListener(OnClickListener onClickListener)
+        {
             mNegativeClickListener = onClickListener;
             return this;
         }
 
-        public DialogDate build() {
+        public DialogDate build()
+        {
             return new DialogDate(this);
         }
     }

@@ -14,16 +14,17 @@ import android.widget.TextView;
 
 import com.naxy.xytodo.R;
 
-public class DialogEditText extends Dialog {
+public class DialogEditText extends Dialog
+{
     private Context mContext;
     private int iAnimationResID;
     private int iTitleResID;
     private int iEditHintResID;
-    private String strEditHintRes ="";
+    private String strEditHintRes = "";
     private int iEditErrResID;
     private int iPositiveID;
     private int iPositiveColorID;//积极颜色
-    private int iNagitiveID;
+    private int iNegativeID;
     private OnClickListener mPositiveClickListener;
     private OnClickListener mNegativeClickListener;
 
@@ -33,8 +34,10 @@ public class DialogEditText extends Dialog {
     private Button mNegativeBtn;
 
     //显示键盘
-    public void showKeyboard(){
-        if(edtText!=null){
+    public void showKeyboard()
+    {
+        if (edtText != null)
+        {
             //设置可获得焦点
             edtText.setFocusable(true);
             edtText.setFocusableInTouchMode(true);
@@ -47,7 +50,8 @@ public class DialogEditText extends Dialog {
         }
     }
 
-    private DialogEditText(Builder builder) {
+    private DialogEditText(Builder builder)
+    {
         super(builder.mContext, builder.mThemeResID);
         mContext = builder.mContext;
         iAnimationResID = builder.mAnimationResID;
@@ -57,17 +61,19 @@ public class DialogEditText extends Dialog {
         iEditErrResID = builder.mEditErrResID;
         iPositiveID = builder.mPositiveID;
         iPositiveColorID = builder.mPositiveColorID;
-        iNagitiveID = builder.mNegativeID;
+        iNegativeID = builder.mNegativeID;
         mPositiveClickListener = builder.mPositiveClickListener;
         mNegativeClickListener = builder.mNegativeClickListener;
     }
 
-    public static Builder from(Context context) {
+    public static Builder from(Context context)
+    {
         return new Builder(context);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         // 设置对话框使用的布局文件
         this.setContentView(R.layout.dialog_edit_text);
@@ -78,23 +84,30 @@ public class DialogEditText extends Dialog {
         edtText = (EditText) findViewById(R.id.edit_masterPassword);
         // 设置属性
         mTitle.setText(iTitleResID);
-        if (iEditHintResID == 0){
+        if (iEditHintResID == 0)
+        {
             edtText.setHint(strEditHintRes);
-        }else{
+        }
+        else
+        {
             edtText.setHint(iEditHintResID);
         }
         mPositiveBtn.setText(iPositiveID);
-        mPositiveBtn.setTextColor(ContextCompat.getColor(mContext,iPositiveColorID));
-        mNegativeBtn.setText(iNagitiveID);
+        mPositiveBtn.setTextColor(ContextCompat.getColor(mContext, iPositiveColorID));
+        mNegativeBtn.setText(iNegativeID);
         mNegativeBtn.setTextColor(ContextCompat.getColor(mContext, R.color.text_normal_gray));
         // 设置监听
-        mPositiveBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        mPositiveBtn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
                 mPositiveClickListener.onClick(DialogEditText.this, DialogInterface.BUTTON_POSITIVE);
             }
         });
-        mNegativeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        mNegativeBtn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
                 mNegativeClickListener.onClick(DialogEditText.this, DialogInterface.BUTTON_POSITIVE);
             }
         });
@@ -103,7 +116,8 @@ public class DialogEditText extends Dialog {
         window.setWindowAnimations(iAnimationResID);
     }
 
-    public String getText() {
+    public String getText()
+    {
         String strtemp =
                 edtText.getText()
                         .toString()
@@ -111,7 +125,8 @@ public class DialogEditText extends Dialog {
         return strtemp;
     }
 
-    public boolean checkCode() {
+    public boolean checkCode()
+    {
         boolean bResult = true;
         String strtemp =
                 edtText.getText()
@@ -126,7 +141,8 @@ public class DialogEditText extends Dialog {
         return bResult;
     }
 
-    public static class Builder {
+    public static class Builder
+    {
         Context mContext;
         int mThemeResID;
         OnClickListener mPositiveClickListener;
@@ -140,66 +156,79 @@ public class DialogEditText extends Dialog {
         int mEditErrResID;
         int mAnimationResID;
 
-        private Builder(Context context) {
+        private Builder(Context context)
+        {
             mContext = context;
         }
 
-        public Builder setTheme(int theme) {
+        public Builder setTheme(int theme)
+        {
             mThemeResID = theme;
             return this;
         }
 
-        public Builder setTitle(int id) {
+        public Builder setTitle(int id)
+        {
             mTitleResID = id;
             return this;
         }
 
-        public Builder setEditHint(int id) {
+        public Builder setEditHint(int id)
+        {
             mEditHintResID = id;
             return this;
         }
 
-        public Builder setEditHint(String str) {
+        public Builder setEditHint(String str)
+        {
             mEditHintRes = str;
             return this;
         }
 
-        public Builder setEditErr(int id) {
+        public Builder setEditErr(int id)
+        {
             mEditErrResID = id;
             return this;
         }
 
-        public Builder setAnimations(int id) {
+        public Builder setAnimations(int id)
+        {
             mAnimationResID = id;
             return this;
         }
 
-        public Builder setPositiveID(int id) {
+        public Builder setPositiveID(int id)
+        {
             mPositiveID = id;
             return this;
         }
 
-        public Builder setPositiveColorID(int id) {
+        public Builder setPositiveColorID(int id)
+        {
             mPositiveColorID = id;
             return this;
         }
 
-        public Builder setNegativieID(int id) {
+        public Builder setNegativeID(int id)
+        {
             mNegativeID = id;
             return this;
         }
 
-        public Builder setPositiveListener(OnClickListener listener) {
+        public Builder setPositiveListener(OnClickListener listener)
+        {
             mPositiveClickListener = listener;
             return this;
         }
 
-        public Builder setNegativeListener(OnClickListener onClickListener) {
+        public Builder setNegativeListener(OnClickListener onClickListener)
+        {
             mNegativeClickListener = onClickListener;
             return this;
         }
 
-        public DialogEditText build() {
+        public DialogEditText build()
+        {
             return new DialogEditText(this);
         }
     }

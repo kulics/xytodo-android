@@ -16,17 +16,20 @@ import com.naxy.xytodo.tool.ToolConstant;
 import com.naxy.xytodo.tool.ToolFunction;
 
 
-public class ActivitySettings extends ActivityBase implements ToolConstant{
+public class ActivitySettings extends ActivityBase implements ToolConstant
+{
 
     AppNaxy app;// 全局缓存
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         //自定义ActionBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
+        if (toolbar != null)
+        {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             setTitle(getText(R.string.activity_title_settings));
@@ -34,11 +37,13 @@ public class ActivitySettings extends ActivityBase implements ToolConstant{
         // 装填缓存数据
         app = (AppNaxy) this.getApplication();
         //加载组件
-        RelativeLayout btn0 = (RelativeLayout)findViewById(R.id.btn_clearData);
+        RelativeLayout btn0 = (RelativeLayout) findViewById(R.id.btn_clearData);
         //设置监听
-        btn0.setOnClickListener(new View.OnClickListener() {
+        btn0.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 //弹出清空数据对话框
                 DialogXy dlgClearData = DialogXy.from(
                         ActivitySettings.this)
@@ -53,25 +58,29 @@ public class ActivitySettings extends ActivityBase implements ToolConstant{
                         .setPositiveID(
                                 R.string.button_ok)
                         .setPositiveColorID(R.color.PURE_RED_500)
-                        .setNegativieID(
+                        .setNegativeID(
                                 R.string.button_cancel)
                         .setNegativeListener(
-                                new DialogInterface.OnClickListener() {
+                                new DialogInterface.OnClickListener()
+                                {
 
                                     @Override
                                     public void onClick(
                                             DialogInterface dialog,
-                                            int id) {
+                                            int id)
+                                    {
                                         dialog.dismiss();
                                     }
                                 })
                         .setPositiveListener(
-                                new DialogInterface.OnClickListener() {
+                                new DialogInterface.OnClickListener()
+                                {
 
                                     @Override
                                     public void onClick(
                                             DialogInterface dialog,
-                                            int id) {
+                                            int id)
+                                    {
                                         //清空数据
                                         app.DBMGet().DBClear();
                                         // 设置返回代码
@@ -89,8 +98,10 @@ public class ActivitySettings extends ActivityBase implements ToolConstant{
 
     // 菜单按钮监听
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -101,7 +112,8 @@ public class ActivitySettings extends ActivityBase implements ToolConstant{
 
     // 返回键动画
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         super.onBackPressed();
         // 设置跳转动画
         ToolFunction.SetTransitionAnimation(this, TYPE_SWIPELEFT_EXIT);
@@ -110,12 +122,15 @@ public class ActivitySettings extends ActivityBase implements ToolConstant{
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
+                                    Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
         // 当otherActivity中返回数据的时候，会响应此方法
         // requestCode和resultCode必须与请求startActivityForResult()和返回setResult()的时候传入的值一致。
-        if (requestCode == TYPE_SETTING) {
-            if (resultCode == TYPE_ACTION_SUCCESS) {
+        if (requestCode == TYPE_SETTING)
+        {
+            if (resultCode == TYPE_ACTION_SUCCESS)
+            {
                 // 设置返回代码
                 Intent i = new Intent();
                 setResult(TYPE_ACTION_SUCCESS, i);

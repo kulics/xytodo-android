@@ -4,7 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 //子任务模型
-public class ModelTaskSub extends ModelBase {
+public class ModelTaskSub extends ModelBase
+{
     //项目字段
     public final static String COL_ID = "id";
     public final static String COL_ID_TASK = "id_task";
@@ -17,52 +18,65 @@ public class ModelTaskSub extends ModelBase {
     private int status;//状态
 
     //构造方法
-    public ModelTaskSub() {
+    public ModelTaskSub()
+    {
         content = "";
     }
 
     //转化为json
-    public JSONObject ToJSON() {
+    public JSONObject ToJSON()
+    {
         JSONObject temp = new JSONObject();
-        try {
+        try
+        {
             temp.put(COL_CONTENT, content);
             temp.put(COL_STATUS, status);
-        } catch (JSONException e) {
+        }
+        catch (JSONException e)
+        {
             e.printStackTrace();
         }
         return temp;
     }
 
 
-    public int getID() {
+    public int getID()
+    {
         return this.id;
     }
 
-    public void setID(int id) {
+    public void setID(int id)
+    {
         this.id = id;
     }
 
-    public String getContent() {
+    public String getContent()
+    {
         return this.content;
     }
 
-    public void setContent(String content) {
+    public void setContent(String content)
+    {
         this.content = content;
     }
 
-    public int getStatus() {
+    public int getStatus()
+    {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(int status)
+    {
         this.status = status;
     }
 
-    public int getIdTask() {
+    public int getIdTask()
+    {
         return idTask;
     }
 
-    public void setIdTask(int idTask) {
+    public void setIdTask(int idTask)
+    {
         this.idTask = idTask;
     }
 }

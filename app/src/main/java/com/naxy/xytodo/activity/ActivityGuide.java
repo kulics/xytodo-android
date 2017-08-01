@@ -9,14 +9,17 @@ import com.naxy.xytodo.tool.ToolConstant;
 import com.naxy.xytodo.tool.ToolFunction;
 
 
-public class ActivityGuide extends ActivityBase implements ToolConstant {
+public class ActivityGuide extends ActivityBase implements ToolConstant
+{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
         //设置ActionBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
+        if (toolbar != null)
+        {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             setTitle(getText(R.string.activity_title_guide));
@@ -25,8 +28,10 @@ public class ActivityGuide extends ActivityBase implements ToolConstant {
 
     // 设置菜单监听
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -37,7 +42,8 @@ public class ActivityGuide extends ActivityBase implements ToolConstant {
 
     // 返回键动画
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         super.onBackPressed();
         // 设置跳转动画
         ToolFunction.SetTransitionAnimation(this, TYPE_SWIPELEFT_EXIT);

@@ -3,13 +3,17 @@ package com.naxy.xytodo.database;
 import com.naxy.xytodo.model.ModelTask;
 
 //任务表
-class TableTask extends TableBase {
+class TableTask extends TableBase
+{
     //表名
-    static String TableName() {
+    static String TableName()
+    {
         return "task";
     }
+
     //项目
-    static String[] TableColumns() {
+    static String[] TableColumns()
+    {
         return new String[]{
                 ModelTask.COL_ID,
                 ModelTask.COL_CONTENT,
@@ -22,8 +26,10 @@ class TableTask extends TableBase {
                 ModelTask.COL_STATUS
         };
     }
+
     //创建表语句
-    static String TableCreate() {
+    static String TableCreate()
+    {
         return "CREATE TABLE " + TableName() + " (" +
                 ModelTask.COL_ID + " INTEGER PRIMARY KEY, " +
                 ModelTask.COL_CONTENT + " TEXT, " +
@@ -36,8 +42,10 @@ class TableTask extends TableBase {
                 ModelTask.COL_STATUS + " INTEGER " +
                 ");";
     }
+
     //更新语句
-    static String TableUpgrade() {
+    static String TableUpgrade()
+    {
         return "DROP TABLE IF EXISTS " + TableName();
     }
 }

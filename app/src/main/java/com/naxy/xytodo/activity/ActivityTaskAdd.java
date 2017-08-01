@@ -29,7 +29,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
+public class ActivityTaskAdd extends ActivityBase implements ToolConstant
+{
     private ModelTask mData;//数据
 
     RecyclerView mRecyclerView;// 列表
@@ -43,12 +44,14 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
     private DialogDate dlgDate;//日期获取框
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_edit);
         //设置ActionBar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (mToolbar != null) {
+        if (mToolbar != null)
+        {
             setSupportActionBar(mToolbar);
             setTitle(getText(R.string.activity_title_task_add));
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -71,17 +74,21 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
         //读取最后的使用色
         ToolSharedPreferences spfl = new ToolSharedPreferences(this, "set_info");
         mData.setColor(spfl.GetStringValue("color_last"));
-        if (mData.getColor().length() <= 0) {
+        if (mData.getColor().length() <= 0)
+        {
             mData.setColor("blue");
         }
         setColor(mData.getColor());
         initRecyclerView();
         //设置监听
-        btnAction.setOnClickListener(new View.OnClickListener() {
+        btnAction.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 // 获取输入栏消息
-                if (mData.getContent().length() > 0) {
+                if (mData.getContent().length() > 0)
+                {
                     mData.setSub(mAdapter.DataSubGet());
                     app.DBMGet().TaskAdd(mData);
                     Intent i = new Intent();
@@ -94,12 +101,15 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
+                                    Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
         // 当otherActivity中返回数据的时候，会响应此方法
         // requestCode和resultCode必须与请求startActivityForResult()和返回setResult()的时候传入的值一致。
-        if (requestCode == TYPE_ITEM_SET) {
-            if (resultCode == TYPE_ACTION_SUCCESS) {
+        if (requestCode == TYPE_ITEM_SET)
+        {
+            if (resultCode == TYPE_ACTION_SUCCESS)
+            {
                 // 更新
                 String note = data.getStringExtra("note");
                 mAdapter.NoteUpdate(note);
@@ -109,7 +119,8 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
 
     // 返回键动画
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         super.onBackPressed();
         // 设置跳转动画
         ToolFunction.SetTransitionAnimation(this, TYPE_SWIPERIGHT_EXIT);
@@ -117,15 +128,18 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
 
     //创建菜单
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.menu_task_add, menu);
         return true;
     }
 
     //监听菜单
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case android.R.id.home:
                 onBackPressed();
                 return true;
@@ -145,25 +159,29 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
                         .setPositiveID(
                                 R.string.button_ok)
                         .setPositiveColorID(R.color.PURE_BLUE_500)
-                        .setNegativieID(
+                        .setNegativeID(
                                 R.string.button_cancel)
                         .setNegativeListener(
-                                new DialogInterface.OnClickListener() {
+                                new DialogInterface.OnClickListener()
+                                {
 
                                     @Override
                                     public void onClick(
                                             DialogInterface dialog,
-                                            int id) {
+                                            int id)
+                                    {
                                         dialog.dismiss();
                                     }
                                 })
                         .setPositiveListener(
-                                new DialogInterface.OnClickListener() {
+                                new DialogInterface.OnClickListener()
+                                {
 
                                     @Override
                                     public void onClick(
                                             DialogInterface dialog,
-                                            int id) {
+                                            int id)
+                                    {
                                         mData.setColor(dlgColor.getColorTag());
                                         //保存最后的使用色
                                         ToolSharedPreferences spfl = new ToolSharedPreferences(ActivityTaskAdd.this, "set_info");
@@ -181,29 +199,36 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
     }
 
     // 初始化listview
-    private void initRecyclerView() {
+    private void initRecyclerView()
+    {
         mAdapter = new AdapterTaskEdit(this, app.DBMGet(),
-                new AdapterTaskEdit.ViewHolderClicks() {
-                    @Override
-                    public void onViewClick(int position) {
-                        if (position == 2) {
-                            Intent intent = new Intent(
-                                    ActivityTaskAdd.this,
-                                    ActivityNote.class);
-                            intent.putExtra("note", mData.getNote());
-                            ActivityTaskAdd.this
-                                    .startActivityForResult(intent, TYPE_ITEM_SET);
-                            // 设置跳转动画
-                            ToolFunction
-                                    .SetTransitionAnimation(
-                                            ActivityTaskAdd.this,
-                                            TYPE_FALLDOWN_ENTER);
-                        }
-                    }
-                }, new AdapterTaskEdit.ViewHolderBtnClicks() {
+                                       new AdapterTaskEdit.ViewHolderClicks()
+                                       {
+                                           @Override
+                                           public void onViewClick(int position)
+                                           {
+                                               if (position == 2)
+                                               {
+                                                   Intent intent = new Intent(
+                                                           ActivityTaskAdd.this,
+                                                           ActivityNote.class);
+                                                   intent.putExtra("note", mData.getNote());
+                                                   ActivityTaskAdd.this
+                                                           .startActivityForResult(intent, TYPE_ITEM_SET);
+                                                   // 设置跳转动画
+                                                   ToolFunction
+                                                           .SetTransitionAnimation(
+                                                                   ActivityTaskAdd.this,
+                                                                   TYPE_FALLDOWN_ENTER);
+                                               }
+                                           }
+                                       }, new AdapterTaskEdit.ViewHolderBtnClicks()
+        {
             @Override
-            public void onViewClick(int position, View v) {
-                switch (position) {
+            public void onViewClick(int position, View v)
+            {
+                switch (position)
+                {
                     case 1:
                         //创建菜单弹窗
                         PopupMenu popup = new PopupMenu(ActivityTaskAdd.this, v);
@@ -211,11 +236,14 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
                         popup.getMenuInflater()
                                 .inflate(R.menu.menu_task_time, popup.getMenu());
                         //设置监听
-                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                            public boolean onMenuItemClick(MenuItem item) {
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
+                        {
+                            public boolean onMenuItemClick(MenuItem item)
+                            {
                                 long unixTime = new Date().getTime();//获取当前时区下日期时间对应的时间戳
                                 int now = (int) (unixTime / 1000);
-                                switch (item.getItemId()) {
+                                switch (item.getItemId())
+                                {
                                     case R.id.action_today:
                                         mData.setTimeTarget(now);
                                         break;
@@ -232,22 +260,26 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
                                                 .setPositiveID(
                                                         R.string.button_ok)
                                                 .setPositiveColorID(R.color.PURE_BLUE_500)
-                                                .setNegativieID(
+                                                .setNegativeID(
                                                         R.string.button_cancel)
                                                 .setNegativeListener(
-                                                        new DialogInterface.OnClickListener() {
+                                                        new DialogInterface.OnClickListener()
+                                                        {
                                                             @Override
                                                             public void onClick(
                                                                     DialogInterface dialog,
-                                                                    int id) {
+                                                                    int id)
+                                                            {
                                                                 dialog.dismiss();
                                                             }
                                                         }).setPositiveListener(
-                                                        new DialogInterface.OnClickListener() {
+                                                        new DialogInterface.OnClickListener()
+                                                        {
 
                                                             @Override
                                                             public void onClick(
-                                                                    DialogInterface dialog, int id) {
+                                                                    DialogInterface dialog, int id)
+                                                            {
                                                                 DatePicker pk = dlgDate.PickerGet();
                                                                 // 创建 Calendar 对象
                                                                 Calendar calendar = Calendar.getInstance();
@@ -283,9 +315,11 @@ public class ActivityTaskAdd extends ActivityBase implements ToolConstant {
     }
 
     //设置沉浸颜色
-    public void setColor(String color) {
+    public void setColor(String color)
+    {
         Window window = getWindow();
-        switch (color) {
+        switch (color)
+        {
             case "green":
                 mToolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.PURE_GREEN_500));
                 window.setStatusBarColor(ContextCompat.getColor(this, R.color.PURE_GREEN_700));
