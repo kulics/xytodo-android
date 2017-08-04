@@ -345,8 +345,9 @@ public class ActivityMain extends ActivityBase implements ToolConstant
                                     temp.setTimeSort(temp.getTimeCreate());
                                     temp.setStatus(0);
                                     int modelID = app.DBMGet().TaskAdd(temp);
-                                    mAdapter.DataAdd(app.DBMGet().TaskGet(modelID));
-                                    mRecyclerView.scrollToPosition(0);
+                                    mAdapter.DataAdd(app.DBMGet().TaskGet(modelID)); //添加显示列表数据
+                                    mRecyclerView.scrollToPosition(0); //滑动到顶部
+                                    UpdateTag(); //更新顶部状态
                                 }
                                 dialog.dismiss();
                             }

@@ -65,11 +65,8 @@ public class AdapterTask extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         else
         {
-            //遍历添加进数据集
-            for (ModelTask v : dataset)
-            {
-                mDataset.add(v);
-            }
+            //添加进数据集
+            mDataset = dataset;
         }
         //刷新整体数据
         this.notifyDataSetChanged();

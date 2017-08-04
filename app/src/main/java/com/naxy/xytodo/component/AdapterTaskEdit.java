@@ -128,8 +128,8 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case 0:
                 // 根据布局文件实例化view
                 v = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.view_item_task_edit, parent, false);
-                vh = new ViewHolderTaskEdit(v, mListenerIntent, new EditTextListener()
+                        .inflate(R.layout.view_item_task_main, parent, false);
+                vh = new ViewHolderTaskMain(v, mListenerIntent, new EditTextListener()
                 {
                     @Override
                     public void onTextEdit(int position, String str)
@@ -157,20 +157,20 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case 1:
                 // 根据布局文件实例化view
                 v = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.view_item_task_edit_time, parent, false);
-                vh = new ViewHolderTaskEditTime(v, mListenerIntent, mListenerBtn);
+                        .inflate(R.layout.view_item_task_time, parent, false);
+                vh = new ViewHolderTaskTime(v, mListenerIntent, mListenerBtn);
                 break;
             case 2:
                 // 根据布局文件实例化view
                 v = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.view_item_task_edit_note, parent, false);
-                vh = new ViewHolderTaskEditNote(v, mListenerIntent);
+                        .inflate(R.layout.view_item_task_note, parent, false);
+                vh = new ViewHolderTaskNote(v, mListenerIntent);
                 break;
             default:
                 // 根据布局文件实例化view
                 v = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.view_item_task_edit_sub, parent, false);
-                vh = new ViewHolderTaskEditSub(v, mListenerIntent, mListenerBtn, new EditTextListener()
+                        .inflate(R.layout.view_item_task_sub, parent, false);
+                vh = new ViewHolderTaskSub(v, mListenerIntent, mListenerBtn, new EditTextListener()
                 {
                     @Override
                     public void onTextEdit(int position, String str)
@@ -215,7 +215,7 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (position)
         {
             case 0:
-                ViewHolderTaskEdit holder0 = (ViewHolderTaskEdit) holder;
+                ViewHolderTaskMain holder0 = (ViewHolderTaskMain) holder;
                 holder0.tvContent.setText(mDataTask.getContent());
                 holder0.tvContent.setHint(R.string.content);
                 holder0.cbxStatus.setChecked(mDataTask.getStatus() == 1);
@@ -236,18 +236,18 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
                 break;
             case 1:
-                ViewHolderTaskEditTime holder1 = (ViewHolderTaskEditTime) holder;
+                ViewHolderTaskTime holder1 = (ViewHolderTaskTime) holder;
                 //转化时间
                 String time = ToolFunction.GetDateFromUTC(mContext, mDataTask.getTimeTarget());
                 holder1.tvContent.setText(time);
                 break;
             case 2:
-                ViewHolderTaskEditNote holder2 = (ViewHolderTaskEditNote) holder;
+                ViewHolderTaskNote holder2 = (ViewHolderTaskNote) holder;
                 holder2.tvContent.setText(mDataTask.getNote());
                 holder2.tvContent.setHint(R.string.note);
                 break;
             default:
-                ViewHolderTaskEditSub holder3 = (ViewHolderTaskEditSub) holder;
+                ViewHolderTaskSub holder3 = (ViewHolderTaskSub) holder;
                 holder3.tvContent.setHint(R.string.content);
                 ModelTaskSub sub = mDataTaskSub.get(position - 3);
                 holder3.tvContent.setText(sub.getContent());
@@ -289,7 +289,7 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         void onViewClick(int position, boolean isChecked);
     }
 
-    private static class ViewHolderTaskEdit extends RecyclerView.ViewHolder
+    private static class ViewHolderTaskMain extends RecyclerView.ViewHolder
     {
         EditText tvContent;
         AppCompatCheckBox cbxStatus;
@@ -299,7 +299,7 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         EditTextListener mListenerTextContent;
         ViewHolderCbxChange mListenerCbx;//检查监听
 
-        ViewHolderTaskEdit(View v, ViewHolderClicks listenerIntent, EditTextListener listenerTextContent, ViewHolderCbxChange listenerCbx)
+        ViewHolderTaskMain(View v, ViewHolderClicks listenerIntent, EditTextListener listenerTextContent, ViewHolderCbxChange listenerCbx)
         {
             super(v);
             mListenerContact = listenerIntent;
@@ -359,13 +359,13 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    private static class ViewHolderTaskEditNote extends RecyclerView.ViewHolder
+    private static class ViewHolderTaskNote extends RecyclerView.ViewHolder
     {
         TextView tvContent;
         RelativeLayout rlytRippleContent;//内容布局
         ViewHolderClicks mListenerContact;//ITEM监听
 
-        ViewHolderTaskEditNote(View v, ViewHolderClicks listenerIntent)
+        ViewHolderTaskNote(View v, ViewHolderClicks listenerIntent)
         {
             super(v);
             mListenerContact = listenerIntent;
@@ -387,7 +387,7 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    private static class ViewHolderTaskEditTime extends RecyclerView.ViewHolder
+    private static class ViewHolderTaskTime extends RecyclerView.ViewHolder
     {
         TextView tvContent;
         AppCompatImageButton btnMore;
@@ -395,7 +395,7 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ViewHolderClicks mListenerContact;//ITEM监听
         ViewHolderBtnClicks mListenerBtn;//按钮监听
 
-        ViewHolderTaskEditTime(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn)
+        ViewHolderTaskTime(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn)
         {
             super(v);
             mListenerContact = listenerIntent;
@@ -431,7 +431,7 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 
-    private static class ViewHolderTaskEditSub extends RecyclerView.ViewHolder
+    private static class ViewHolderTaskSub extends RecyclerView.ViewHolder
     {
         EditText tvContent;
         AppCompatImageButton btnDelete;
@@ -442,8 +442,8 @@ public class AdapterTaskEdit extends RecyclerView.Adapter<RecyclerView.ViewHolde
         EditTextListener mListenerTextContent;
         ViewHolderCbxChange mListenerCbx;//检查监听
 
-        ViewHolderTaskEditSub(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn, EditTextListener listenerTextContent,
-                              ViewHolderCbxChange listenerCbx)
+        ViewHolderTaskSub(View v, ViewHolderClicks listenerIntent, ViewHolderBtnClicks linstenerBtn, EditTextListener listenerTextContent,
+                          ViewHolderCbxChange listenerCbx)
         {
             super(v);
             mListenerContact = listenerIntent;

@@ -57,41 +57,42 @@ public class ToolFunction implements ToolConstant
     {
         Date dateTarget = new java.util.Date(time * 1000);
         Date dateNow = new Date();
-        SimpleDateFormat fYear = new java.text.SimpleDateFormat("yyyy");
-        SimpleDateFormat fDay = new java.text.SimpleDateFormat("dd");
+        SimpleDateFormat fYear = new SimpleDateFormat("yyyy");
+        SimpleDateFormat fDay = new SimpleDateFormat("D");
 
         int dYear = Integer.parseInt(fYear.format(dateNow)) - Integer.parseInt(fYear.format(dateTarget));
         int dDay = Integer.parseInt(fDay.format(dateNow)) - Integer.parseInt(fDay.format(dateTarget));
         //按格式输出时间
         String date = "";
-        if (dYear > 0)
-        {//去年
-            date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(dateTarget);
+        if (dYear > 0) //去年以前
+        {
+            date = new SimpleDateFormat("yyyy-MM-dd").format(dateTarget);
         }
-        else if (dDay > 1)
-        {//昨天以前
-            date = new java.text.SimpleDateFormat("MM-dd EEE").format(dateTarget);
+        else if (dYear <= -1)  //明年以后
+        {
+            date = new SimpleDateFormat("yyyy-MM-dd").format(dateTarget);
         }
-        else if (dDay > 0)
-        {//昨天
-            date = context.getString(R.string.yesterday) + new java.text.SimpleDateFormat("  EEE").format(dateTarget);
+        else if (dDay > 1) //昨天以前
+        {
+            date = new SimpleDateFormat("MM-dd EEE").format(dateTarget);
         }
-        else if (dDay == 0)
-        {//今天
-            date = context.getString(R.string.today) + new java.text.SimpleDateFormat("  EEE").format(dateTarget);
+        else if (dDay > 0) //昨天
+        {
+            date = context.getString(R.string.yesterday) + new SimpleDateFormat("  EEE").format(dateTarget);
         }
-        else if (dDay > -2)
-        {//明天
-            date = context.getString(R.string.tomorrow) + new java.text.SimpleDateFormat("  EEE").format(dateTarget);
+        else if (dDay == 0) //今天
+        {
+            date = context.getString(R.string.today) + new SimpleDateFormat("  EEE").format(dateTarget);
         }
-        else if (dYear > -2)
-        {//明天以后
-            date = new java.text.SimpleDateFormat("MM-dd  EEE").format(dateTarget);
+        else if (dDay > -2) //明天
+        {
+            date = context.getString(R.string.tomorrow) + new SimpleDateFormat("  EEE").format(dateTarget);
         }
-        else
-        {//明年以后
-            date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(dateTarget);
+        else //明天以后
+        {
+            date = new SimpleDateFormat("MM-dd  EEE").format(dateTarget);
         }
+
         return date;
     }
 
@@ -100,8 +101,8 @@ public class ToolFunction implements ToolConstant
     {
         Date dateTarget = new java.util.Date(time * 1000);
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-        if (fmt.format(dateTarget).toString().equals(fmt.format(new Date()).toString()))
-        {//格式化为相同格式
+        if (fmt.format(dateTarget).toString().equals(fmt.format(new Date()).toString())) //格式化为相同格式
+        {
             return true;
         }
         else

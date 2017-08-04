@@ -35,6 +35,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="8dp"
                     android:textColor="#333333"
+                    android:maxLines="8"
                     android:textSize="16sp" />
 
             </RelativeLayout>
